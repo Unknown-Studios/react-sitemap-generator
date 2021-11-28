@@ -23,7 +23,8 @@
     "lint": "eslint --fix . && prettier --write . --ignore-unknown",
     "lint:staged": "lint-staged",
     "test": "ts-mocha -p ./tsconfig.json test/**/*.ts",
-    "coverage": "nyc yarn test"
+    "coverage": "nyc yarn test",
+    "prepublishOnly": "yarn build"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --fix",

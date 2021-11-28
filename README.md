@@ -1,5 +1,7 @@
 # react-sitemap-generation
 
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/markusmoltke)
+
 ## Get started
 
 ### Install
