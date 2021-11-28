@@ -5,8 +5,8 @@ on:
     branches: [master]
 
 jobs:
-  release-ios:
-    name: Build and release iOS app
+  run-tests:
+    name: Run all unit tests and generate coverage report
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
