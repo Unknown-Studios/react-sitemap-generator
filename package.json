@@ -7,7 +7,7 @@
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "description": "Includes function to generate a sitemap",
+  "description": "Helper to generate a sitemap for react apps",
   "repository": {
     "type": "github",
     "url": "https://github.com/Unknown-Studios/react-sitemap-generator.git"
@@ -15,14 +15,15 @@
   "files": [
     "dist/**/*"
   ],
-  "license": "MIT",
+  "license": "MPL-2.0",
   "scripts": {
     "start": "ts-node index.ts",
     "build": "tsc -b",
     "clean": "rm -f -rf ./dist && rm -f tsconfig.tsbuildinfo",
     "lint": "eslint --fix . && prettier --write . --ignore-unknown",
     "lint:staged": "lint-staged",
-    "test": "ts-mocha -p ./tsconfig.json test/**/*.ts"
+    "test": "ts-mocha -p ./tsconfig.json test/**/*.ts",
+    "coverage": "nyc yarn test"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": "eslint --fix",
@@ -55,6 +56,7 @@
     "lint-staged": "^12.1.2",
     "mocha": "^8.0.0",
     "np": "^7.6.0",
+    "nyc": "^15.1.0",
     "prettier": "^2.5.0",
     "react": "^17.0.2",
     "react-router": "^6.0.2",

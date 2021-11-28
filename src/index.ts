@@ -3,6 +3,8 @@ import { create } from 'xmlbuilder2'
 import fs = require('fs')
 import React = require('react')
 
+const fsPromises = fs.promises
+
 export interface PathOption {
   slugs?: { [key: string]: string[] }
   ignore?: boolean
@@ -64,35 +66,36 @@ const generateXML = (
       if (option.ignore) {
         return
       }
-      let found = false
+      const slugs = getSlugs(uri)
 
-      // Loop through all slugs
-      getSlugs(uri).forEach((key) => {
-        found = true // Already added slugs, no need to add path too
-        const midStringRegex = new RegExp(`/:${key}/`, 'g')
-        const endStringRegex = new RegExp(`/:${key}$`)
+      if (slugs.length > 0) {
+        const addSlug = (uri: string, key: string) => {
+          const regex = new RegExp(`/:${key}`)
 
-        // Get the slugs values for this string
-        const slugValues = findSlugValue(option, key)
+          // Get the slugs values for this string
+          const slugValues = findSlugValue(option, key)
 
-        // Loop through the slug value
-        slugValues.forEach((value) => {
-          let uriWithSlug = ''
-          if (uri.match(midStringRegex)) {
-            uriWithSlug = uri.replace(midStringRegex, `/${value}/`)
-          } else {
-            uriWithSlug = uri.replace(endStringRegex, `/${value}`)
-          }
-          const item = xml.ele('url')
-          item.ele('loc').txt(hostname + addMissingSlash(uriWithSlug))
-          item.ele('priority').txt(`${option.priority || 0}`)
-          item
-            .ele('changefreq')
-            .txt(option.changefreq || 'never')
-            .up()
-        })
-      })
-      if (path.props.sitemapIndex !== false && !found) {
+          // Loop through the slug value
+          slugValues.forEach((value) => {
+            const uriWithSlug = uri.replace(regex, `/${value}`)
+
+            const slugs = getSlugs(uriWithSlug)
+
+            if (slugs.length > 0) {
+              addSlug(uriWithSlug, slugs[0]) // Call reccursively
+            } else {
+              const item = xml.ele('url')
+              item.ele('loc').txt(hostname + addMissingSlash(uriWithSlug))
+              item.ele('priority').txt(`${option.priority || 0}`)
+              item
+                .ele('changefreq')
+                .txt(option.changefreq || 'never')
+                .up()
+            }
+          })
+        }
+        addSlug(uri, slugs[0])
+      } else {
         const item = xml.ele('url')
         item.ele('loc').txt(hostname + addMissingSlash(uri))
         item.ele('priority').txt(`${option.priority || 0}`)
@@ -106,34 +109,34 @@ const generateXML = (
   return xml.end({ prettyPrint: true })
 }
 
-const createFile = (
+const createFile = async (
   content: string,
   output: GenerateSitemapProps['output'],
-) => {
-  const dir = path.join(__dirname, output)
+): Promise<boolean> => {
+  const dir = path.isAbsolute(output)
+    ? output
+    : path.join(process.cwd(), output)
 
-  fs.mkdir(dir, { recursive: true }, (err: any) => {
-    if (err) throw err
-  })
-
-  fs.writeFile(path.join(dir, 'sitemap.xml'), content, (err: any) => {
-    if (err) {
-      return console.log(err)
-    }
-    console.log('The file was saved!')
-  })
+  await fsPromises.mkdir(dir, { recursive: true })
+  await fsPromises.writeFile(path.join(dir, 'sitemap.xml'), content)
+  return true
 }
 
-export const generateSitemap = ({
+export const generateSitemap = async ({
   url,
   routes,
   output = './public',
   options,
 }: GenerateSitemapProps) => {
-  if (routes.length === 0) {
-    console.error('No routes defined')
-    return
+  if (url === undefined) {
+    console.error('URL not defined')
+    return false
   }
+  if (routes === undefined || routes.length === 0) {
+    console.error('No routes defined')
+    return false
+  }
+
   const content = generateXML(url, options, routes)
-  createFile(content, output)
+  return await createFile(content, output)
 }

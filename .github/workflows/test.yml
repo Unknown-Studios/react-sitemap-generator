@@ -1,0 +1,24 @@
+name: Test configuration
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  release-ios:
+    name: Build and release iOS app
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'yarn'
+      - name: Install packages
+        run: yarn install
+      - name: Lint package
+        run: yarn lint
+      - name: Run tests
+        run: yarn test
+      - name: Create coverage report
+        run: yarn coverage
