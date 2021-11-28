@@ -108,18 +108,25 @@ describe('Test generateXML', () => {
           '/test': { ignore: true },
           '/heythere/:id': { slugs: { id: ['Hey'] } }, // Check end slug
           '/cake/:id/test': { slugs: { id: ['Hey'] } }, // Check middle slug
+          '/pizza/:id/:test': {
+            // Multiple slugs
+            slugs: {
+              id: ['pizza1', 'pizza2', 'pizza3'],
+              test: ['test1', 'test2', 'test3'],
+            },
+          },
         },
         [moreRoutes],
       ),
     ).to.equal(
-      '<?xml version="1.0" encoding="utf-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url>\n    <loc>https://example.org/hello</loc>\n    <priority>0</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/heythere/Hey</loc>\n    <priority>0</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/cake/Hey/test</loc>\n    <priority>0</priority>\n    <changefreq>never</changefreq>\n  </url>\n</urlset>',
+      '<?xml version="1.0" encoding="utf-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url>\n    <loc>https://example.org/hello</loc>\n    <priority>0</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/heythere/Hey</loc>\n    <priority>0</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/cake/Hey/test</loc>\n    <priority>0</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/pizza/pizza1/test1</loc>\n    <priority>0</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/pizza/pizza1/test2</loc>\n    <priority>0</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/pizza/pizza1/test3</loc>\n    <priority>0</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/pizza/pizza2/test1</loc>\n    <priority>0</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/pizza/pizza2/test2</loc>\n    <priority>0</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/pizza/pizza2/test3</loc>\n    <priority>0</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/pizza/pizza3/test1</loc>\n    <priority>0</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/pizza/pizza3/test2</loc>\n    <priority>0</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/pizza/pizza3/test3</loc>\n    <priority>0</priority>\n    <changefreq>never</changefreq>\n  </url>\n</urlset>',
     )
   })
 })
 
 describe('Test createFile', () => {
   const createFile = index.__get__('createFile')
-  const dir = path.join(__dirname, '..', 'public') // .. because we are inside test dir
+  const dir = path.join(process.cwd(), '..', 'public') // .. because we are inside test dir
   afterEach(() => {
     rmSync(dir, { recursive: true, force: true })
   })
@@ -132,7 +139,7 @@ describe('Test createFile', () => {
     expect(existsSync(wrongPath)).to.equal(false)
   })
   it('Test output variable', async () => {
-    const testDir = path.join(__dirname, '..', 'testDir') // .. because we are inside test dir
+    const testDir = path.join(process.cwd(), '..', 'testDir') // .. because we are inside test dir
     const correctPath = path.join(testDir, 'sitemap.xml')
 
     // Absolute path
@@ -151,7 +158,7 @@ describe('Test createFile', () => {
   })
 })
 describe('Test generateSitemap', () => {
-  const dir = path.join(__dirname, '..', 'public') // .. because we are inside test dir
+  const dir = path.join(process.cwd(), '..', 'public') // .. because we are inside test dir
   afterEach(() => {
     rmSync(dir, { recursive: true, force: true })
   })

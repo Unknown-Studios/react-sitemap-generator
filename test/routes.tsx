@@ -16,6 +16,7 @@ export const moreRoutes = () => {
       <Route path="/test"></Route>
       <Route path="/heythere/:id"></Route>
       <Route path="/cake/:id/test"></Route>
+      <Route path="/pizza/:id/:test"></Route>
     </Routes>
   )
 }
