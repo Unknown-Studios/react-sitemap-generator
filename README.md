@@ -21,7 +21,7 @@ yarn add react-sitemap-generator
 Minimum requirements example
 
 ```typescript
-import { generateSitemap } from 'react-sitemap-generation'
+import { generateSitemap } from 'react-sitemap-generator'
 import Routes from './Routes'
 
 generateSitemap({
@@ -33,7 +33,7 @@ generateSitemap({
 Full example
 
 ```typescript
-import { generateSitemap } from 'react-sitemap-generation'
+import { generateSitemap } from 'react-sitemap-generator'
 import Routes from './Routes'
 
 generateSitemap({
