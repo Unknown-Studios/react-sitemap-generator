@@ -1,4 +1,4 @@
-# react-sitemap-generation
+# react-sitemap-generator
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/markusmoltke)
 
@@ -7,13 +7,13 @@
 ### Install
 
 ```shell
-npm install --save react-sitemap-generation
+npm install --save react-sitemap-generator
 ```
 
 or
 
 ```shell
-yarn add react-sitemap-generation
+yarn add react-sitemap-generator
 ```
 
 ### Usage
