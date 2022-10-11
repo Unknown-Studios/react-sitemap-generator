@@ -44,6 +44,13 @@ const addMissingSlash = (path: string): string => {
   return path.startsWith('/') ? path : `/${path}`
 }
 
+/**
+ * Generates the sitemap.xml file
+ * @param hostname The url of the website
+ * @param options The options to follow
+ * @param Routes The react routes to map
+ * @returns The generated sitemap as a string
+ */
 const generateXML = (
   hostname: string,
   options?: GenerateSitemapProps['options'],
