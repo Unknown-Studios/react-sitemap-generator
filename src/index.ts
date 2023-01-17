@@ -93,7 +93,7 @@ const generateXML = (
             } else {
               const item = xml.ele('url')
               item.ele('loc').txt(hostname + addMissingSlash(uriWithSlug))
-              item.ele('priority').txt(`${option.priority || 0}`)
+              item.ele('priority').txt(`${option.priority || 1}`)
               item
                 .ele('changefreq')
                 .txt(option.changefreq || 'never')
@@ -105,7 +105,7 @@ const generateXML = (
       } else {
         const item = xml.ele('url')
         item.ele('loc').txt(hostname + addMissingSlash(uri))
-        item.ele('priority').txt(`${option.priority || 0}`)
+        item.ele('priority').txt(`${option.priority || 1}`)
         item
           .ele('changefreq')
           .txt(option.changefreq || 'never')
