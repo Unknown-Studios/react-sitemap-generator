@@ -1,4 +1,3 @@
-import path = require('path')
 import { create } from 'xmlbuilder2'
 import fs = require('fs')
 import React = require('react')
@@ -59,8 +58,10 @@ const generateXML = (
   const xml = create({ encoding: 'utf-8' })
     .ele('urlset')
     .att('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9')
-   Routes.forEach((route) => {
-    let paths = (route({}) as any)?.props.children as JSX.Element | JSX.Element[]
+  Routes.forEach((route) => {
+    let paths = (route({}) as any)?.props.children as
+      | JSX.Element
+      | JSX.Element[]
 
     // Arrayify if not array
     if (!Array.isArray(paths)) {
@@ -112,7 +113,7 @@ const generateXML = (
           .up()
       }
     })
-   })
+  })
   return xml.end({ prettyPrint: true })
 }
 
@@ -120,12 +121,8 @@ const createFile = async (
   content: string,
   output: GenerateSitemapProps['output'],
 ): Promise<boolean> => {
-  const dir = path.isAbsolute(output)
-    ? output
-    : path.join(process.cwd(), output)
-
-  await fsPromises.mkdir(dir, { recursive: true })
-  await fsPromises.writeFile(path.join(dir, 'sitemap.xml'), content)
+  await fsPromises.mkdir(output, { recursive: true })
+  await fsPromises.writeFile(output + '/sitemap.xml', content)
   return true
 }
 

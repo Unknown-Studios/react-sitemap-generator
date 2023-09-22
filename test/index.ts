@@ -4,7 +4,6 @@ import { describe, it } from 'mocha'
 import { generateSitemap, PathOption } from '../src'
 import { moreRoutes, routes } from './routes'
 import rewire from 'rewire'
-import path from 'path'
 
 const index = rewire('../src/index.ts')
 
@@ -126,45 +125,37 @@ describe('Test generateXML', () => {
 
 describe('Test createFile', () => {
   const createFile = index.__get__('createFile')
-  const dir = path.join(process.cwd(), '..', 'public') // .. because we are inside test dir
+  const dir = '../public' // .. because we are inside test dir
   afterEach(() => {
     rmSync(dir, { recursive: true, force: true })
   })
   it('Test file generation', async () => {
-    const correctPath = path.join(dir, 'sitemap.xml')
-    const wrongPath = path.join(dir, 'sitemap')
+    const correctPath = dir + '/sitemap.xml'
+    const wrongPath = dir + '/sitemap'
     await createFile('content', '../public')
 
     expect(existsSync(correctPath)).to.equal(true)
     expect(existsSync(wrongPath)).to.equal(false)
   })
   it('Test output variable', async () => {
-    const testDir = path.join(process.cwd(), '..', 'testDir') // .. because we are inside test dir
-    const correctPath = path.join(testDir, 'sitemap.xml')
+    const testDir = '../testDir' // .. because we are inside test dir
+    const correctPath = testDir + '/sitemap.xml'
 
-    // Absolute path
+    // Relative path
     await createFile('content', testDir)
     expect(existsSync(correctPath)).to.equal(true)
 
     rmSync(testDir, { recursive: true, force: true })
-
-    // Relative path
-    const testDir2 = path.join(testDir, '..', 'testDir2')
-    const correctPath2 = path.join(testDir2, 'sitemap.xml')
-    await createFile('content', '../testDir2')
-
-    expect(existsSync(correctPath2)).to.equal(true)
-    rmSync(testDir2, { recursive: true, force: true })
   })
 })
 describe('Test generateSitemap', () => {
-  const dir = path.join(process.cwd(), '..', 'public') // .. because we are inside test dir
+  const dir = '../public' // .. because we are inside test dir
   afterEach(() => {
     rmSync(dir, { recursive: true, force: true })
   })
   it('Test general function', async () => {
-    const correctPath = path.join(dir, 'sitemap.xml')
-    const wrongPath = path.join(dir, 'sitemap')
+    const correctPath = dir + '/sitemap.xml'
+    const wrongPath = dir + '/sitemap'
     await generateSitemap({
       routes: [routes],
       url: 'https://example.org',
