@@ -3,8 +3,8 @@ import { existsSync, rmSync } from 'fs'
 import { describe, it } from 'mocha'
 import { generateSitemap, PathOption } from '../src'
 import { moreRoutes, routes } from './routes'
-import rewire = require('rewire')
-import path = require('path')
+import rewire from 'rewire'
+import path from 'path'
 
 const index = rewire('../src/index.ts')
 
@@ -75,13 +75,13 @@ describe('Test generateXML', () => {
   it('test if a single route works', () => {
     // Test if single route generates correct
     expect(generateXML('https://example.org', {}, [routes])).to.equal(
-      '<?xml version="1.0" encoding="utf-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url>\n    <loc>https://example.org/hello</loc>\n    <priority>0</priority>\n    <changefreq>never</changefreq>\n  </url>\n</urlset>',
+      '<?xml version="1.0" encoding="utf-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url>\n    <loc>https://example.org/hello</loc>\n    <priority>1</priority>\n    <changefreq>never</changefreq>\n  </url>\n</urlset>',
     )
   })
   it('test if multiple routes work', () => {
     // Test if multiple routes generate correctly
     expect(generateXML('https://example.org', {}, [moreRoutes])).to.equal(
-      '<?xml version="1.0" encoding="utf-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url>\n    <loc>https://example.org/hello</loc>\n    <priority>0</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/test</loc>\n    <priority>0</priority>\n    <changefreq>never</changefreq>\n  </url>\n</urlset>',
+      '<?xml version="1.0" encoding="utf-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url>\n    <loc>https://example.org/hello</loc>\n    <priority>1</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/test</loc>\n    <priority>1</priority>\n    <changefreq>never</changefreq>\n  </url>\n</urlset>',
     )
   })
 
@@ -119,7 +119,7 @@ describe('Test generateXML', () => {
         [moreRoutes],
       ),
     ).to.equal(
-      '<?xml version="1.0" encoding="utf-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url>\n    <loc>https://example.org/hello</loc>\n    <priority>0</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/heythere/Hey</loc>\n    <priority>0</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/cake/Hey/test</loc>\n    <priority>0</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/pizza/pizza1/test1</loc>\n    <priority>0</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/pizza/pizza1/test2</loc>\n    <priority>0</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/pizza/pizza1/test3</loc>\n    <priority>0</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/pizza/pizza2/test1</loc>\n    <priority>0</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/pizza/pizza2/test2</loc>\n    <priority>0</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/pizza/pizza2/test3</loc>\n    <priority>0</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/pizza/pizza3/test1</loc>\n    <priority>0</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/pizza/pizza3/test2</loc>\n    <priority>0</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/pizza/pizza3/test3</loc>\n    <priority>0</priority>\n    <changefreq>never</changefreq>\n  </url>\n</urlset>',
+      '<?xml version="1.0" encoding="utf-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url>\n    <loc>https://example.org/hello</loc>\n    <priority>1</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/heythere/Hey</loc>\n    <priority>1</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/cake/Hey/test</loc>\n    <priority>1</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/pizza/pizza1/test1</loc>\n    <priority>1</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/pizza/pizza1/test2</loc>\n    <priority>1</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/pizza/pizza1/test3</loc>\n    <priority>1</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/pizza/pizza2/test1</loc>\n    <priority>1</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/pizza/pizza2/test2</loc>\n    <priority>1</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/pizza/pizza2/test3</loc>\n    <priority>1</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/pizza/pizza3/test1</loc>\n    <priority>1</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/pizza/pizza3/test2</loc>\n    <priority>1</priority>\n    <changefreq>never</changefreq>\n  </url>\n  <url>\n    <loc>https://example.org/pizza/pizza3/test3</loc>\n    <priority>1</priority>\n    <changefreq>never</changefreq>\n  </url>\n</urlset>',
     )
   })
 })

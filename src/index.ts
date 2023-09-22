@@ -59,8 +59,8 @@ const generateXML = (
   const xml = create({ encoding: 'utf-8' })
     .ele('urlset')
     .att('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9')
-  Routes.forEach((route) => {
-    let paths = route({})?.props.children as JSX.Element | JSX.Element[]
+   Routes.forEach((route) => {
+    let paths = (route({}) as any)?.props.children as JSX.Element | JSX.Element[]
 
     // Arrayify if not array
     if (!Array.isArray(paths)) {
@@ -112,7 +112,7 @@ const generateXML = (
           .up()
       }
     })
-  })
+   })
   return xml.end({ prettyPrint: true })
 }
 
