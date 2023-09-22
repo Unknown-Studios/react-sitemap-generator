@@ -31,38 +31,38 @@
     "*": "prettier --write --ignore-unknown"
   },
   "dependencies": {
-    "xmlbuilder2": "^3.0.2"
+    "xmlbuilder2": "^3.1.1"
   },
   "peerDependencies": {
     "react": "^17.0.2",
     "react-router": "^6.0.2"
   },
   "devDependencies": {
-    "@types/chai": "^4.2.22",
-    "@types/mocha": "^10.0.0",
-    "@types/node": "^18.8.4",
-    "@types/react": "^18.0.21",
+    "@types/chai": "^4.3.6",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "^20.6.3",
+    "@types/react": "^18.2.22",
     "@types/rewire": "^2.5.28",
-    "@typescript-eslint/eslint-plugin": "^5.4.0",
-    "@typescript-eslint/parser": "^5.4.0",
-    "chai": "^4.3.4",
-    "eslint": "^8.25.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-config-standard": "^17.0.0",
-    "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-n": "^15.3.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.2",
+    "@typescript-eslint/parser": "^6.7.2",
+    "chai": "^4.3.8",
+    "eslint": "^8.49.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-n": "^16.1.0",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-promise": "^6.0.1",
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
-    "mocha": "^10.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "mocha": "^10.2.0",
     "nyc": "^15.1.0",
-    "prettier": "^2.5.0",
+    "prettier": "^3.0.3",
     "react": "^18.2.0",
-    "react-router": "^6.0.2",
-    "rewire": "^6.0.0",
+    "react-router": "^6.16.0",
+    "rewire": "^7.0.0",
     "ts-mocha": "^10.0.0",
-    "typescript": "^4.5.2"
+    "typescript": "^5.2.2"
   }
 }
