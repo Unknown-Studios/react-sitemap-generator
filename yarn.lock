@@ -479,9 +479,9 @@
     csstype "^3.0.2"
 
 "@types/rewire@^2.5.28":
-  version "2.5.29"
-  resolved "https://registry.yarnpkg.com/@types/rewire/-/rewire-2.5.29.tgz#f382a0b72eac8f5eb6a0f7a15303862243825730"
-  integrity sha512-rXvBDElIpK8c/DLA5JRVjPsY4Sk7pNHYRIgxtbnXd8an4diuH4eoDzVrb9wTTFWI+wLV7sT2vonJj4TJgMz/JQ==
+  version "2.5.30"
+  resolved "https://registry.yarnpkg.com/@types/rewire/-/rewire-2.5.30.tgz#75af106d294ec88ae21228fefe3aa579efec276e"
+  integrity sha512-CSyzr7TF1EUm85as2noToMtLaBBN/rKKlo5ZDdXedQ64cUiHT25LCNo1J1cI4QghBlGmTymElW/2h3TiWYOsZw==
 
 "@types/scheduler@*":
   version "0.16.2"
