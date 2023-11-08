@@ -1,0 +1,26 @@
+name: Run tests
+
+on:  
+  push:
+  pull_request:
+    branches:
+      - master
+
+jobs:  
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+          cache: 'yarn'
+      - name: Install packages
+        run: yarn install
+      - name: Lint package
+        run: yarn lint
+      - name: Run tests
+        run: yarn test
+      - name: Create coverage report
+        run: yarn coverage
