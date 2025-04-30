@@ -36,7 +36,7 @@
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",
-    "react-router": "^6.0.2"
+    "react-router": "^7.0.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.0.3",
