@@ -3964,6 +3964,11 @@ pidtree@^0.6.0:
   resolved "https://registry.yarnpkg.com/pidtree/-/pidtree-0.6.0.tgz#90ad7b6d42d5841e69e0a2419ef38f8883aa057c"
   integrity sha512-eG2dWTVw5bzqGRztnHExczNxt5VGsE6OwTeCG3fdUf9KBsZzO3R5OIIIzWR+iZA0NtZ+RDVdaoE2dK1cn6jH4g==
 
+pirates@^4.0.7:
+  version "4.0.7"
+  resolved "https://registry.yarnpkg.com/pirates/-/pirates-4.0.7.tgz#643b4a18c4257c8a65104b73f3049ce9a0a15e22"
+  integrity sha512-TfySrs/5nm8fQJDcBDuUng3VOUKsd7S+zqvbOTiGXHfxX4wK31ard+hoNuvkicM/2YFzlpDgABOevKSsB4G/FA==
+
 pkg-dir@^4.1.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/pkg-dir/-/pkg-dir-4.2.0.tgz#f099133df7ede422e81d1d8448270eeb3e4261f3"
@@ -4145,11 +4150,12 @@ reusify@^1.0.4:
   integrity sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==
 
 rewire@^9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/rewire/-/rewire-9.0.0.tgz#3a11bf8075c1d993089cf410976c49c6beb58b10"
-  integrity sha512-c21+Rzev3vAdtCpXD3dT4ZVw9w99E3dppyi94HlCmSyn+OSx94iJZWCdnhqBYXO+E8Sm9p3Ky6gduYOroAypvw==
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/rewire/-/rewire-9.0.1.tgz#0f5bd46aafad195010edab7dc6f9d7719a545807"
+  integrity sha512-dnbLeTwHpXvWJjswC6CshXUUnnpE5AVhlayVRvDJhJx5ejbO4nbj1IXqN2urErgB7TpHUAMpf6iPDhQIxeSQOQ==
   dependencies:
     eslint "^9.30"
+    pirates "^4.0.7"
 
 rfdc@^1.4.1:
   version "1.4.1"
