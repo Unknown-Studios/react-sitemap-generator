@@ -39,7 +39,7 @@
     "react-router": "^6.0.2"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.0.3",
+    "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^20.0.0",
     "@types/chai": "^5.2.1",
     "@types/mocha": "^10.0.1",
