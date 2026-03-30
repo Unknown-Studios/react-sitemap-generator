@@ -65,7 +65,7 @@
     "react": "^19.0.0",
     "react-router": "^7.0.1",
     "rewire": "^9.0.0",
-    "ts-mocha": "^10.0.0",
+    "ts-mocha": "^11.1.0",
     "typescript": "^5.2.2"
   }
 }
